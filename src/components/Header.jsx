@@ -1,42 +1,67 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { gsap } from "gsap";
 
 const Header = () => {
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(navRef.current, {
+      y: -80,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(".nav-item", {
+      y: -20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      delay: 0.4,
+      ease: "power2.out",
+    });
+  }, []);
+
   return (
-    <header className="w-full flex flex-row items-center justify-between px-6 py-4 md:px-8 md:py-6 lg:px-16 lg:py-8">
-      <div className="flex-1 min-w-0">
-        {/* Logo or site name here */}
-        <span className="font-bold text-xl md:text-2xl lg:text-3xl whitespace-nowrap">
-          BUILDORA
-        </span>
+    <div
+      ref={navRef}
+      className="w-full flex items-center justify-between px-8 py-4 bg-white/70 backdrop-blur-md shadow-sm"
+    >
+      {/* Logo */}
+      <div className="flex items-center gap-3">
+        <Image
+          src="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
+          alt="Buildora Logo"
+          width={120}
+          height={120}
+        />
+        <span className="kiona text-xl font-semibold">Buildora</span>
       </div>
-      <nav className="flex-1 flex flex-row justify-end gap-6 min-w-0 md:gap-8 lg:gap-10">
-        {/* Navigation links */}
-        <a
-          href="#about"
-          className="text-base md:text-lg lg:text-xl hover:underline"
-        >
-          About
-        </a>
-        <a
-          href="#services"
-          className="text-base md:text-lg lg:text-xl hover:underline"
-        >
-          Services
-        </a>
-        <a
-          href="#projects"
-          className="text-base md:text-lg lg:text-xl hover:underline"
-        >
-          Projects
-        </a>
-        <a
-          href="#contact"
-          className="text-base md:text-lg lg:text-xl hover:underline"
-        >
-          Contact
-        </a>
-      </nav>
-    </header>
+
+      {/* Center Menu */}
+      <div className="hidden lg:flex bg-white shadow-md rounded-full px-6 py-6 gap-6 ">
+        <Link href="/" className="nav-item text-sm font-medium hover:text-primary">
+          Home
+        </Link>
+
+        <Link href="/individuals" className="nav-item text-sm font-medium hover:text-primary">
+          For individuals +
+        </Link>
+
+        <Link href="/clinicians" className="nav-item text-sm font-medium hover:text-primary">
+          For clinicians +
+        </Link>
+      </div>
+
+      {/* CTA Button */}
+      <div>
+      <div className="navbar-end"> <a className="kiona btn rounded-full p-6 hover:bg-secondary hover:text-primary transition-all duration-700 hover:scale-102">Button</a> </div>
+      </div>
+    </div>
   );
 };
 
