@@ -4,13 +4,13 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal bg-secondary text-primary p-10 kiona">
-  <aside className="text-center mx-auto">
+  <aside className="space-y-4">
     <Image
       src="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
       alt="ACME Industries Ltd. Logo"
       width={150}
       height={150}
-      className="mx-auto"
+      className="ml-[-2.8rem]"
     />
     <p className="mt-[-1.5rem]">
       <span className="text-lg font-semibold">BUILDORA</span>
