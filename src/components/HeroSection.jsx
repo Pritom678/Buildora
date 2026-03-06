@@ -7,7 +7,6 @@ import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { FlipWord } from "./animations/FlipWord";
 
-
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HeroSection = () => {
@@ -110,7 +109,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pb-10"
     >
       {/* GRID BACKGROUND */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
@@ -119,7 +118,7 @@ const HeroSection = () => {
       <div className="absolute w-[700px] h-[500px] bg-gradient-to-r from-mutated to-secondary blur-[150px] opacity-40"></div>
 
       {/* CONTENT */}
-      <div className="relative text-center px-6 z-10">
+      <div className="relative text-center px-6 z-10 pt-32">
         <h1
           ref={titleRef}
           className="text-7xl font-bold leading-tight max-w-4xl kiona"
@@ -149,8 +148,11 @@ const HeroSection = () => {
             View Projects
           </button>
 
-          <button className="px-8 py-3 rounded-full border border-primary transition-all duration-300 hover:bg-secondary hover:text-primary">
-            Start Project →
+          <button className="group relative px-8 py-3 rounded-full border border-primary overflow-hidden transition-all duration-300 hover:scale-105">
+            <span className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-primary">
+              Start Project →
+            </span>
           </button>
         </div>
       </div>
