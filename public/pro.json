@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Style Decore",
+    "description": "Style Decore is a modern event decoration and service booking web application designed to connect users with professional decorators. The platform allows users to browse services, book decoration packages, make secure payments, and track their bookings, while admins and decorators manage assignments and workflows efficiently.This project focuses on:",
+    "technologies": ["React", "Node.js", "Express", "MongoDB", "Stripe", "Firebase"],
+    "features": [
+      "User authentication",
+      "Product search and filtering",
+      "Shopping cart",
+      "Online payment integration"
+    ],
+    "github": "https://github.com/Tanvir-Hossain847/Decore-Manage-Client_side-.git",
+    "liveDemo": "https://style-decor-d89db.web.app/",
+    "image": "/images/projects/ecommerce.png"
+  },
+  {
+    "id": 2,
+    "title": "End Task",
+    "description": "EndTask is a full-stack web application designed to manage real-world project execution in a structured, transparent, and scalable way. The platform focuses on turning loosely managed freelance or contract work into an organized workflow where tasks, submissions, and approvals are handled within a single system.",
+    "technologies": ["Next.js", "Express", "MongoDB", "Firebase", "TailwindCSS"],
+    "features": [
+      "Create and manage tasks",
+      "Real-time updates",
+      "Drag and drop task boards",
+      "User authentication"
+    ],
+    "github": "https://github.com/Tanvir-Hossain847/EndTask.git",
+    "liveDemo": "https://end-task.vercel.app/",
+    "image": "/images/projects/task-manager.png"
+  },
+  {
+    "id": 3,
+    "title": "",
+    "description": "Dragon News is a modern news web application that delivers the latest articles across multiple categories in a clean and responsive interface. Users can browse trending headlines, read detailed news articles, and explore different categories such as technology, sports, and world news. The platform is designed to provide a seamless reading experience with features like infinite scrolling, article bookmarking, and personalized news feeds.",
+    "technologies": ["React", "Firebase", "TailwindCSS"],
+    "features": [ 
+        "Category-based news browsing",
+      "Prompt customization",
+      "Save generated posts",
+      "Markdown export"
+    ],
+    "github": "https://github.com/Tanvir-Hossain847/Dragon-News/tree/main/dragon-news",
+    "liveDemo": "https://dragon-news-fb588.web.app/category/1",
+    "image": "https://i.ibb.co.com/mVxXjFxR/Screenshot-2026-02-10-133356.png"
+  }
+]
