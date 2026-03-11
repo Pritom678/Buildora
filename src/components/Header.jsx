@@ -43,7 +43,7 @@ const Header = () => {
           width={110}
           height={110}
         />
-        <span className="kiona text-xl font-semibold text-black">Buildora</span>
+        <span className="kiona text-xl font-semibold text-black">Tekprova</span>
       </div>
 
       {/* Floating Glass Center Menu */}
@@ -78,12 +78,18 @@ const Header = () => {
       <div className="nav-item">
         <button
           className="kiona rounded-full px-8 py-3
-          bg-primary/15 backdrop-blur-xl
-          border border-muted/40 font-medium text-black
-          hover:bg-secondary/50 hover:text-primary
-          transition-all duration-500 hover:scale-105 shadow-md"
+            bg-primary/15 backdrop-blur-xl
+            border border-muted/40 font-medium text-black
+            hover:bg-secondary/50 hover:text-primary
+            transition-all duration-500 hover:scale-105 shadow-md"
+          onClick={() => {
+            const section = document.getElementById("contactUs");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
         >
-          Button
+          Contact Us
         </button>
       </div>
     </header>
