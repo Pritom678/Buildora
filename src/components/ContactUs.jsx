@@ -24,7 +24,10 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 lg:px-16 py-20 bg-primary">
+    <section
+      id="contactUs"
+      className="min-h-screen flex items-center justify-center px-6 lg:px-16 py-20 bg-primary"
+    >
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* LEFT SIDE - Content */}
         <div className="space-y-6">

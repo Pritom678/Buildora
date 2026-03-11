@@ -123,12 +123,13 @@ const HeroSection = () => {
           ref={titleRef}
           className="text-7xl font-bold leading-tight max-w-4xl kiona"
         >
-          BUILD
+          TEKPR
           <FlipWord
             front="O"
             image="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
           />
-          RA <br />
+          VA
+          <br />
           Crafting M
           <FlipWord
             front="O"

@@ -9,21 +9,25 @@ const AboutUs = () => {
         <div className="relative h-[600px] w-full">
           {/* Main Image Card 1 */}
           <div className="absolute top-0 left-0 w-[280px] h-[320px] rounded-2xl shadow-xl overflow-hidden z-10">
-            <Image
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500"
-              alt="Project showcase"
-              fill
-              className="object-cover"
+            <video
+              src="https://res.cloudinary.com/do3iu9q7d/video/upload/v1773245193/13522186-uhd_3840_2160_25fps_rkdfjp.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover w-full h-full"
             />
           </div>
 
           {/* Main Image Card 2 - Overlapping */}
           <div className="absolute top-[140px] left-[200px] w-[300px] h-[340px] rounded-2xl shadow-xl overflow-hidden z-20">
-            <Image
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500"
-              alt="Development workspace"
-              fill
-              className="object-cover"
+            <video
+              src="https://res.cloudinary.com/do3iu9q7d/video/upload/v1773244769/5474267-uhd_2160_4096_25fps_b36qi6.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover w-full h-full"
             />
           </div>
 
@@ -53,7 +57,7 @@ const AboutUs = () => {
         <div className="space-y-6">
           {/* Label */}
           <p className="text-sm font-semibold tracking-widest text-accent/60 uppercase">
-            About Buildora
+            About Tekprova
           </p>
 
           {/* Heading */}
@@ -63,7 +67,7 @@ const AboutUs = () => {
 
           {/* Description */}
           <p className="text-lg text-accent/70 leading-relaxed max-w-xl">
-            Buildora is a modern web development agency specializing in building
+            Tekprova is a modern web development agency specializing in building
             high-performance, scalable websites for startups, agencies, and
             digital brands. We combine cutting-edge technology with creative
             design to deliver exceptional digital experiences.

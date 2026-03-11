@@ -7,7 +7,7 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What services does Buildora offer?",
+      question: "What services does Tekprova offer?",
       answer:
         "We specialize in modern website development, including custom websites, e-commerce platforms, UI/UX design, and performance optimization.",
     },
@@ -54,7 +54,7 @@ const FAQ = () => {
 
           {/* Description */}
           <p className="text-lg text-accent/70 leading-relaxed max-w-xl">
-            Find answers to common questions about Buildora's website
+            Find answers to common questions about Tekprova's website
             development process, services, and how we can help bring your
             digital vision to life.
           </p>

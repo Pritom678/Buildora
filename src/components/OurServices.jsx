@@ -101,7 +101,7 @@ const OurServices = () => {
 
           {/* Description */}
           <p className="text-lg text-accent/70 leading-relaxed max-w-xl">
-            At Buildora, we help businesses build modern, scalable, and
+            At Tekprova, we help businesses build modern, scalable, and
             high-performance websites that drive growth and deliver exceptional
             user experiences. Our expert team combines technical excellence with
             creative innovation.
