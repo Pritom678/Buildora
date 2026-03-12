@@ -1,8 +1,8 @@
-"use client"
-import React, { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';  
+"use client";
+import React, { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { ReactLenis } from "lenis/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,10 +13,10 @@ export default function Projects() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/projects')
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error('Error fetching repositories:', error));
+    fetch("http://localhost:4000/projects")
+      .then((response) => response.json())
+      .then((data) => setProjects(data))
+      .catch((error) => console.error("Error fetching repositories:", error));
   }, []);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Projects() {
       lenisRef.current?.lenis?.raf?.(time * 1000);
     }
 
-    lenisRef.current?.lenis?.on('scroll', ScrollTrigger.update);
+    lenisRef.current?.lenis?.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
@@ -33,49 +33,56 @@ export default function Projects() {
     };
   }, []);
 
-  useGSAP(() => {
-    if (projects.length === 0) return;
+  useGSAP(
+    () => {
+      if (projects.length === 0) return;
 
-    const wrappers = containerRef.current.querySelectorAll('.project-wrapper');
-    const sections = containerRef.current.querySelectorAll('.project-section');
+      const wrappers =
+        containerRef.current.querySelectorAll(".project-wrapper");
+      const sections =
+        containerRef.current.querySelectorAll(".project-section");
 
-    sections.forEach((section, index) => {
-      const wrapper = wrappers[index];
+      sections.forEach((section, index) => {
+        const wrapper = wrappers[index];
 
-      gsap.fromTo(section,
-        {
-          rotation: 25,
-          transformOrigin: 'bottom left',
-        },
-        {
-          rotation: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: wrapper,       
-            start: 'top bottom',    
-            end: 'top top',        
-            scrub: true,
-          }
-        }
-      );
+        gsap.fromTo(
+          section,
+          {
+            rotation: 25,
+            transformOrigin: "bottom left",
+          },
+          {
+            rotation: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: wrapper,
+              start: "top bottom",
+              end: "top top",
+              scrub: true,
+            },
+          },
+        );
 
-      if (index === sections.length - 1) return;
+        if (index === sections.length - 1) return;
 
-      ScrollTrigger.create({
-        trigger: wrapper,           
-        start: 'top top',
-        end: () => `+=${wrapper.offsetHeight}`,
-        pin: true,
-        pinSpacing: false,         
+        ScrollTrigger.create({
+          trigger: wrapper,
+          start: "top top",
+          end: () => `+=${wrapper.offsetHeight}`,
+          pin: true,
+          pinSpacing: false,
+        });
       });
-    });
-
-  }, { scope: containerRef, dependencies: [projects] });
+    },
+    { scope: containerRef, dependencies: [projects] },
+  );
 
   if (projects.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <h2 className="text-2xl font-semibold text-gray-500 animate-pulse">Loading Projects...</h2>
+        <h2 className="text-2xl font-semibold text-gray-500 animate-pulse">
+          Loading Projects...
+        </h2>
       </div>
     );
   }
@@ -84,75 +91,278 @@ export default function Projects() {
     <>
       <ReactLenis ref={lenisRef} root options={{ autoRaf: false }} />
       <div className="w-full" ref={containerRef}>
-        {projects.map((project) => (
-          <div
-            className="project-wrapper w-full min-h-screen relative flex"
-            key={project._id || project.id}
-          >
-            <section className="project-section h-full w-full flex flex-col lg:flex-row items-center justify-center gap-12 p-8 md:p-16 lg:py-24 border-b border-gray-200 bg-white origin-bottom-left will-change-transform">
+        {projects.map((project, index) => {
+          const isEven = index % 2 === 0;
 
-              <div className="flex-1 w-full space-y-8">
-                <div>
-                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-4">
-                    {project.title}
-                  </h2>
-                  <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
-                    {project.description}
-                  </p>
+          return (
+            <div
+              className="project-wrapper w-full min-h-screen relative flex"
+              key={project._id || project.id}
+            >
+              <section className="project-section h-full w-full flex items-center justify-center p-8 md:p-5 lg:py-7 border-b border-gray-200 bg-white origin-bottom-left will-change-transform">
+                <div className="max-w-7xl w-full">
+                  {isEven ? (
+                    // Layout 1: Images Left → Content Right
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                      {/* Left Side - Two Stacked Images */}
+                      <div className="relative">
+                        <div className="grid grid-cols-2 gap-4 items-end">
+                          {/* Image 1 - Tall/Long */}
+                          <div className="aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                            <img
+                              src={project.image}
+                              alt={`${project.title} preview 1`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          {/* Image 2 - Rounded Square */}
+                          <div className="aspect-square bg-gray-100 rounded-3xl overflow-hidden shadow-lg ">
+                            <img
+                              src={project.image}
+                              alt={`${project.title} preview 2`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+
+                        {/* View Live Button - Glassmorphism */}
+                        <div className="mt-6">
+                          <a
+                            href={project.liveDemo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 px-8 py-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full shadow-lg hover:bg-white/40 transition-all duration-300 hover:scale-105"
+                          >
+                            <span className="font-semibold text-gray-900">
+                              View Live
+                            </span>
+                            <svg
+                              className="w-5 h-5 text-gray-900"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Project Content */}
+                      <div className="space-y-6">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 uppercase tracking-tight">
+                          {project.title}
+                        </h2>
+
+                        <p className="text-lg text-gray-600 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* Project Details */}
+                        <div className="space-y-3 pt-4">
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Project name
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              {project.title}
+                            </span>
+                          </div>
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Client name
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              Robert Giligan
+                            </span>
+                          </div>
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Project Date
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              DD-MM-YYYY
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Decorative Icon */}
+                        <div className="pt-6">
+                          <svg
+                            className="w-20 h-12 text-gray-300"
+                            viewBox="0 0 100 50"
+                            fill="none"
+                          >
+                            <circle
+                              cx="15"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="35"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="55"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="75"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    // Layout 2: Content Left → Images Right
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                      {/* Left Side - Project Content */}
+                      <div className="space-y-6">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 uppercase tracking-tight">
+                          {project.title}
+                        </h2>
+
+                        <p className="text-lg text-gray-600 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* Project Details */}
+                        <div className="space-y-3 pt-4">
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Project name
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              {project.title}
+                            </span>
+                          </div>
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Client name
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              Robert Giligan
+                            </span>
+                          </div>
+                          <div className="flex items-center border-b border-gray-300 pb-3">
+                            <span className="text-sm text-gray-500 w-32 font-medium">
+                              Project Date
+                            </span>
+                            <span className="text-sm text-gray-900 font-medium">
+                              DD-MM-YYYY
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Decorative Icon */}
+                        <div className="pt-6">
+                          <svg
+                            className="w-20 h-12 text-gray-300"
+                            viewBox="0 0 100 50"
+                            fill="none"
+                          >
+                            <circle
+                              cx="15"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="35"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="55"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                            <circle
+                              cx="75"
+                              cy="25"
+                              r="8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            />
+                          </svg>
+                        </div>
+
+                        {/* View Live Button - Glassmorphism */}
+                        <div className="pt-4">
+                          <a
+                            href={project.liveDemo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 px-8 py-3 bg-white/30 backdrop-blur-md border border-white/40 rounded-full shadow-lg hover:bg-white/40 transition-all duration-300 hover:scale-105"
+                          >
+                            <span className="font-semibold text-gray-900">
+                              View Live
+                            </span>
+                            <svg
+                              className="w-5 h-5 text-gray-900"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Two Stacked Images */}
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Image 1 - Tall/Long */}
+                        <div className="aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                          <img
+                            src={project.image}
+                            alt={`${project.title} preview 1`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        {/* Image 2 - Rounded Square */}
+                        <div className="aspect-square bg-gray-100 rounded-3xl overflow-hidden shadow-lg">
+                          <img
+                            src={project.image}
+                            alt={`${project.title} preview 2`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-
-                <div className="space-y-3 pt-2">
-                  <h3 className="text-sm uppercase tracking-wider font-bold text-gray-400">Tech Stack</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium border border-indigo-100 shadow-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  <h3 className="text-sm uppercase tracking-wider font-bold text-gray-400">Key Features</h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-4 pt-6">
-                  <a href={project.liveDemo} target="_blank" rel="noreferrer" className="px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition shadow-lg hover:shadow-xl flex items-center gap-2" >
-                    View Live Demo
-                  </a>
-                  <a href={project.github} target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-full border-2 border-gray-200 hover:border-gray-900 transition flex items-center gap-2" >
-                    Source Code
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Column: Image */}
-              <div className="flex-1 w-full lg:h-[70vh] h-[40vh] min-h-[350px] relative">
-                <div className="absolute inset-0 bg-gray-100 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 transform transition duration-500 hover:scale-[1.02]">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} preview`}
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-              </div>
-
-            </section>
-          </div>
-        ))}
+              </section>
+            </div>
+          );
+        })}
       </div>
     </>
   );
