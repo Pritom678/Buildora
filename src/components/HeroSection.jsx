@@ -126,14 +126,14 @@ const HeroSection = () => {
           TEKPR
           <FlipWord
             front="O"
-            image="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
+            image="https://res.cloudinary.com/dfwigpcer/image/upload/v1773332531/Tekprova_Trans_tuvfli.png"
           />
           VA
           <br />
           Crafting M
           <FlipWord
             front="O"
-            image="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
+            image="https://res.cloudinary.com/dfwigpcer/image/upload/v1773332531/Tekprova_Trans_tuvfli.png"
           />
           dern <br />
           Web Experiences

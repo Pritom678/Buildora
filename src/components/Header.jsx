@@ -38,12 +38,12 @@ const Header = () => {
       {/* Logo */}
       <div className="flex items-center nav-item">
         <Image
-          src="https://res.cloudinary.com/dfwigpcer/image/upload/v1772730622/bUILDORA_lOGO_oFFICIAL_Png_deszsa.png"
+          src="https://res.cloudinary.com/dfwigpcer/image/upload/v1773331333/Tekprova_2_llzpvf.png"
           alt="Buildora Logo"
           width={110}
           height={110}
         />
-        <span className="kiona text-xl font-semibold text-black">Tekprova</span>
+        <span className="kiona text-xl font-semibold text-black ms-[-1.5rem]">Tekprova</span>
       </div>
 
       {/* Floating Glass Center Menu */}
